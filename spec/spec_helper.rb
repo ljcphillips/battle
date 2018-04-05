@@ -19,6 +19,7 @@ require './lib/app.rb'
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
+require './spec/features/web_helpers.rb'
 
 # tell Capybara about our app class
 Capybara.app = Battle

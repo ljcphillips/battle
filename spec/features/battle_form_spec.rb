@@ -1,14 +1,17 @@
 feature 'Battle Name Form' do
   scenario 'Can enter in player names and see them' do
-    visit('/')
-    fill_in 'player1', with: 'David'
-    fill_in 'player2', with: 'John'
-    click_button 'Submit'
+    sign_in_and_play
     expect(page).to have_content 'David vs. John'
   end
 
   scenario 'See player 2s hit points' do
-    visit('/play')
+    sign_in_and_play
     expect(page).to have_content 0
+  end
+
+  scenario 'Attack player 2 and get confirmation' do
+    sign_in_and_play
+    click_button 'Attack'
+    expect(page).to have_content "You've attacked player 2!" 
   end
 end
