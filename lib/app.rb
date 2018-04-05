@@ -1,28 +1,38 @@
 require 'sinatra/base'
-require_relative './hit_points.rb'
+require_relative './player.rb'
 
 class Battle < Sinatra::Application
-  set :session_secret, 'secret'
-  enable :sessions
+  # set :session_secret, 'secret'
+  # enable :sessions
 
   get '/' do
     erb :index
   end
 
   post '/battle' do
-    session[:player1] = params[:player1]
-    session[:player2] = params[:player2]
+    $p1 = Player.new(params[:player1]).name
+    $p2 = Player.new(params[:player2]).name
+    p "showing global variables"
+    p $p1
+    p $p2
     redirect '/play'
+
   end
 
   get '/play' do
-    @hit_points = HitPoints.new.score
-    @player1 = session[:player1]
-    @player2 = session[:player2]
+    # hitpoints = HitPoints.new
+    # @p1hp = hitpoints.player_1_score
+    # @p2hp = hitpoints.player_2_score
+    @player1 = $p1
+    @player2 = $p2
+    p "showing global variables"
+    p $p1
+    p $p2
     erb :play
   end
 
   post '/in_play' do
+
     erb :in_play
   end
 

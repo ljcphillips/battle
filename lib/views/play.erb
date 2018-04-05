@@ -1,5 +1,9 @@
-<%= @player1 %> vs. <%= @player2 %>
-<%= @hit_points %>
+<%= @player1 %> vs. <%= @player2 %> <br>
+Player 1: <%= @p1hp %> <br>
+Player 2: <%= @p2hp %> <br>
 <form action="http://localhost:4567/in_play" method="post">
-<input type="submit" value="Attack">
+<input type="submit" value="Attack Player 1">
+</form>
+<form action="http://localhost:4567/in_play" method="post">
+<input type="submit" value="Attack Player 2">
 </form>
