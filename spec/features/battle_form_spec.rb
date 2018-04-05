@@ -6,4 +6,9 @@ feature 'Battle Name Form' do
     click_button 'Submit'
     expect(page).to have_content 'David vs. John'
   end
+
+  scenario 'See player 2s hit points' do
+    visit('/play')
+    expect(page).to have_content 0
+  end
 end

@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require_relative './hit_points.rb'
 
 class Battle < Sinatra::Application
   set :session_secret, 'secret'
@@ -15,6 +16,7 @@ class Battle < Sinatra::Application
   end
 
   get '/play' do
+    @hit_points = HitPoints.new.score
     @player1 = session[:player1]
     @player2 = session[:player2]
     erb :play
