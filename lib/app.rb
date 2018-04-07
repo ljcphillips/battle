@@ -1,7 +1,7 @@
 require 'sinatra/base'
 require_relative './player.rb'
 
-class Battle < Sinatra::Application
+class Battle < Sinatra::Base
   # set :session_secret, 'secret'
   # enable :sessions
 
@@ -12,9 +12,6 @@ class Battle < Sinatra::Application
   post '/battle' do
     $p1 = Player.new(params[:player1]).name
     $p2 = Player.new(params[:player2]).name
-    p "showing global variables"
-    p $p1
-    p $p2
     redirect '/play'
 
   end
@@ -25,9 +22,6 @@ class Battle < Sinatra::Application
     # @p2hp = hitpoints.player_2_score
     @player1 = $p1
     @player2 = $p2
-    p "showing global variables"
-    p $p1
-    p $p2
     erb :play
   end
 
